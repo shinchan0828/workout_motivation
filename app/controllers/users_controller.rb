@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
-  def new
+  def show
+    @user = User.find_by(id: params[:id])
   end
 end
