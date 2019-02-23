@@ -18,4 +18,8 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.permit(:account_update, keys:[:name, :age])
     end
 
+    def current_user?(user)
+      user == current_user
+    end
+
 end
