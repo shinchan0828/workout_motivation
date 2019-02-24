@@ -1,0 +1,20 @@
+<% provide(:title, 'Foodmenu Post') %>
+<h1>レシピ投稿</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+
+    <%= form_for(@foodmenu) do |f| %>
+    <%= render 'shared/error_messages' %>
+
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control", placeholder: "料理のタイトルをご記入ください" %>
+
+    <%= f.label :description %>
+    <%= f.text_field :description, class: "form-control", placeholder: "料理の特徴などご記入くだい" %>
+
+
+    <%= f.submit "投稿", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

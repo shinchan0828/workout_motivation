@@ -8,4 +8,13 @@
       </h1>
     </section>
   </aside>
+  <div class="col-md-8">
+    <% if @user.foodmenus.any? %>
+    <h3>Foodmenus (<%= @user.foodmenus.count %>)</h3>
+    <ol class = "foodmenus">
+      <%= render @foodmenus %>
+    </ol>
+    <%= will_paginate @foodmenus %>
+    <% end %>
+  </div>
 </div>

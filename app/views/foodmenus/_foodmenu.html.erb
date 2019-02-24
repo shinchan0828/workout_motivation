@@ -1,0 +1,8 @@
+<li id="foodmenu-<%= foodmenu.id %>">
+  <%= link_to gravatar_for(foodmenu.user, size: 50), foodmenu.user %>
+  <span class="user"><%= link_to foodmenu.user.name, foodmenu.user %></span>
+  <span class="title"><%= foodmenu.title %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(foodmenu.created_at) %>ago.
+  </span>
+</li>

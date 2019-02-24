@@ -1,0 +1,30 @@
+class FoodmenusController < ApplicationController
+  before_action :authenticate_user!, only:[:new, :edit, :create, :destroy]
+
+  def new
+    @foodmenu = Foodmenu.new
+  end
+
+  def create
+    @foodmenu = current_user.foodmenus.build(foodmenu_params)
+    if @foodmenu.save
+      flash[:success] = "フードメニューの投稿に成功しました"
+      redirect_to root_url
+    else
+      render 'new'
+    end
+  end
+
+  def edit
+  end
+
+
+  def destroy
+  end
+
+  private
+
+  def foodmenu_params
+    params.require(:foodmenu).permit(:title, :description)
+  end
+end
