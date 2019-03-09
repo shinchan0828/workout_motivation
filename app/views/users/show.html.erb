@@ -8,13 +8,19 @@
       </h1>
     </section>
   </aside>
-  <div class="col-md-8">
-    <% if @user.foodmenus.any? %>
-    <h3>Foodmenus (<%= @user.foodmenus.count %>)</h3>
-    <ol class = "foodmenus">
-      <%= render @foodmenus %>
-    </ol>
-    <%= will_paginate @foodmenus %>
-    <% end %>
-  </div>
+  <% @foodmenus.each do |foodmenu| %>
+  <div class="col-md-offset-4 col-md-6">
+  <ol class = "foodmenus">
+    <li id="foodmenu-<%= foodmenu.id %>">
+      <%= link_to gravatar_for(foodmenu.user, size: 50), foodmenu.user %>
+      <span class="user"><%= link_to foodmenu.user.name, foodmenu.user %></span>
+      <span class="title"><%= foodmenu.title %></span>
+      <span class="timestamp">
+        Posted <%= time_ago_in_words(foodmenu.created_at) %>ago.
+      </span>
+    </li>
+  </ol>
+</div>
+  <%= will_paginate @foodmenus %>
+  <% end %>
 </div>
